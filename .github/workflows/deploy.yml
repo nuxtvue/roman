@@ -1,47 +1,28 @@
-name: Deploy MERN Application to VDS
+name: Deploy
 
 on:
   push:
-    branches:
-      - main # Укажите ветку, с которой вы хотите деплоить
-
+    tags:
+      - "*.*.*"
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - run: ls -la
+      - uses: actions/checkout@master
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
+      - run: sudo apt-get install rsync
+
+      - name: Deploy theme on server
+        id: deploy_theme
+        uses: Pendect/action-rsyncer@v1.1.0
+        env:
+          DEPLOY_KEY: ${{secrets.SSH_PRIVATE_KEY}}
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          flags: "-avc --delete"
+          src: "dist/"
+          dest: 'root@"${{secrets.SERVER_IP}}":/home/roman'
 
-      - name: Deploy to Server
-        run: |
-          # Клонировать репозиторий на сервер
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            if [ ! -d "${{ secrets.SERVER_PATH }}" ]; then
-              git clone https://github.com/nuxtvue/roman.git ${{ secrets.SERVER_PATH }}
-            else
-              cd ${{ secrets.SERVER_PATH }} && git pull origin main
-            fi
-
-            cd ${{ secrets.SERVER_PATH }}
-
-            # Установка зависимостей
-            npm install
-
-            # Сборка фронтенда
-            cd client
-            npm install
-            npm run build
-
-            # Запуск бэкенда с помощью PM2
-            cd ../server
-            npm install
-            pm2 restart all || pm2 start server.js --name "mern-app"
-
-            # Перезапуск nginx
-            sudo systemctl restart nginx
-          EOF
+      - name: Display status from deploy
+        run: echo "${{ steps.deploy.outputs.status }}"
