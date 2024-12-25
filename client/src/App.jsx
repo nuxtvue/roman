@@ -1,7 +1,15 @@
+import { motion } from "motion/react";
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">Привет МИР</h1>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="text-3xl font-bold underline text-red-500"
+      >
+        Привет МИР
+      </motion.h1>
+      
     </>
   );
 }
