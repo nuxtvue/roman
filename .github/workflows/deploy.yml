@@ -38,7 +38,7 @@ jobs:
             # Запуск бэкенда с помощью PM2
             cd ../server
             npm install
-            pm2 restart all || pm2 start server.js --name "mern-app"
+            pm2 restart all || pm2 start server.js --name "server"
 
             # Перезапуск nginx
             sudo systemctl restart nginx
