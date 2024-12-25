@@ -21,9 +21,7 @@ jobs:
         run: |
           # Клонировать репозиторий на сервер
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            if [ ! -d "${{ secrets.SERVER_PATH }}" ]; then
-              git clone https://github.com/nuxtvue/roman.git ${{ secrets.SERVER_PATH }}
-            else
+            
               cd ${{ secrets.SERVER_PATH }} && git pull origin main
             fi
 
