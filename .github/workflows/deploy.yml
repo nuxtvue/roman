@@ -21,8 +21,7 @@ jobs:
           ssh-keyscan -H 62.109.13.68 >> ~/.ssh/known_hosts
 
       - name: Install dependencies on VDS
-        run: |
-          ssh -i ~/.ssh/github nuxtvue@62.109.13.68 << 'EOF'
+        run: |          
             cd /home/roman
             git pull origin main
             cd server
