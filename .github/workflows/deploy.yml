@@ -3,12 +3,11 @@ name: Deploy MERN Application to VDS
 on:
   push:
     branches:
-      - main  # Можно указать нужную ветку для деплоя
+      - main # Укажите ветку, с которой вы хотите деплоить
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -18,21 +17,31 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Install dependencies on the server
+      - name: Deploy to Server
         run: |
+          # Клонировать репозиторий на сервер
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            if [ ! -d "${{ secrets.SERVER_PATH }}" ]; then
+              git clone https://github.com/nuxtvue/roman.git ${{ secrets.SERVER_PATH }}
+            else
+              cd ${{ secrets.SERVER_PATH }} && git pull origin main
+            fi
+
             cd ${{ secrets.SERVER_PATH }}
-            git pull origin main
+
+            # Установка зависимостей
+            npm install
+
+            # Сборка фронтенда
+            cd client
             npm install
             npm run build
-            pm2 restart all
-          EOF
 
-      - name: Deploy React app and restart server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd ${{ secrets.SERVER_PATH }}/client
-            npm run build
-            sudo cp -r dist/* /home/roman/client/dist  # nginx будет обслуживать эту директорию
-            exit
+            # Запуск бэкенда с помощью PM2
+            cd ../server
+            npm install
+            pm2 restart all || pm2 start server.js --name "mern-app"
+
+            # Перезапуск nginx
+            sudo systemctl restart nginx
           EOF
