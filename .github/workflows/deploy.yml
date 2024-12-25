@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies on VDS
         run: |
-          ssh -i ~/.ssh/id_rsa nuxtvue@62.109.13.68 << 'EOF'
+          ssh -i ~/.ssh/github nuxtvue@62.109.13.68 << 'EOF'
             cd /home/roman
             git pull origin main
             cd server
