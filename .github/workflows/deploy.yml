@@ -22,8 +22,8 @@ jobs:
           # Клонировать репозиторий на сервер
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             
-              cd ${{ secrets.SERVER_PATH }} && git pull origin main
-            fi
+            cd ${{ secrets.SERVER_PATH }} && git pull origin main
+            
 
             cd ${{ secrets.SERVER_PATH }}
 
