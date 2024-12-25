@@ -1,47 +1,48 @@
-name: Deploy MERN Application to VDS
+name: Deploy MERN app to VDS
 
 on:
   push:
     branches:
-      - main # Укажите ветку, с которой вы хотите деплоить
+      - main # или master, если у вас такая ветка
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to Server
+      - name: Set up SSH key for deployment
         run: |
-          # Клонировать репозиторий на сервер
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            if [ ! -d "${{ secrets.SERVER_PATH }}" ]; then
-              git clone https://github.com/nuxtvue/roman.git ${{ secrets.SERVER_PATH }}
-            else
-              cd ${{ secrets.SERVER_PATH }} && git pull origin main
-            fi
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/github
+          chmod 600 ~/.ssh/github
+          ssh-keyscan -H 62.109.13.68 >> ~/.ssh/known_hosts
 
-            cd ${{ secrets.SERVER_PATH }}
-
-            # Установка зависимостей
+      - name: Install dependencies on VDS
+        run: |
+          ssh -i ~/.ssh/id_rsa nuxtvue@62.109.13.68 << 'EOF'
+            cd /home/roman
+            git pull origin main
+            cd server
             npm install
-
-            # Сборка фронтенда
-            cd client
+            cd ../client
             npm install
+            cd ..
+          EOF
+
+      - name: Build frontend with Vite
+        run: |
+          ssh -i ~/.ssh/id_rsa nuxtvue@62.109.13.68 << 'EOF'
+            cd /home/roman/client
             npm run build
+          EOF
 
-            # Запуск бэкенда с помощью PM2
-            cd ../server
-            npm install
-            pm2 restart all || pm2 start server.js --name "mern-app"
-
-            # Перезапуск nginx
-            sudo systemctl restart nginx
+      - name: Restart backend and frontend services
+        run: |
+          ssh -i ~/.ssh/id_rsa nuxtvue@62.109.13.68 << 'EOF'
+            cd /home/roman
+            pm2 restart client  # если используете pm2 для Node.js
+            pm2 restart server # если хотите также использовать pm2 для Vite (если применимо)
           EOF
