@@ -1,12 +1,27 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { motion } from "motion/react";
 const FindQuery = () => {
   const [queryGiga, setQueryGiga] = useState("");
-  const senQueryHandler = () => {};
+  const [resFromGiga, setResFromGiga] = useState();
+  const sendQueryHandler = () => {
+    setTimeout(() => {
+      setResFromGiga("Ожидаем ответа...");
+      console.log(resFromGiga);
+    }, 500);
+
+    setTimeout(() => {
+      setResFromGiga("Ответ получен!");
+      console.log(resFromGiga);
+    }, 1500);
+  };
   return (
     <div>
       <div className="flex flex-col gap-4 mx-10">
+        <div className="text-gray-400 text-sm md:-mb-2">
+          Для использования сервиса вы должны быть авторизованы{" "}
+        </div>
         <div className="flex gap-2">
           <Input
             type="text"
@@ -16,19 +31,28 @@ const FindQuery = () => {
           />
           <Button
             className="w-1/8 h-14 text-md border-2 border-slate-600"
-            onClick={senQueryHandler}
+            onClick={() => sendQueryHandler()}
           >
             Найти
           </Button>
         </div>
-        <div className=" bg-slate-950 w-1/3 h-auto">
-          {queryGiga && (
+
+        {queryGiga && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className=" bg-slate-950 w-1/3 h-auto rounded-lg border-slate-600 border p-2"
+          >
             <div>
-              <span className="text-lg font-bold">Вы ввели запрос :</span>{" "}
-              {queryGiga}
+              <div>
+                <span className="text-lg font-bold">Вы ввели запрос :</span>{" "}
+                {queryGiga}
+              </div>
+              <div className="text-white mt-2 p-2">{resFromGiga}</div>
             </div>
-          )}
-        </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
