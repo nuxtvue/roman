@@ -28,7 +28,8 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
 
             # Установка зависимостей
-            scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/myapp
+            scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
+            mv -f /var/www/roman /var/www/roman
 
             # Сборка фронтенда
             cd client
