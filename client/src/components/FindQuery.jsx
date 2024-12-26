@@ -35,7 +35,7 @@ const FindQuery = () => {
             type="text"
             onChange={(e) => setQueryGiga(e.target.value)}
             placeholder="Ваш запрос"
-            className="w-1/3 h-14 text-md border-2 border-slate-600"
+            className="md:w-1/3 h-14 text-md border-2 border-slate-600"
           />
           <Button
             className="w-1/8 h-14 text-md border-2 border-slate-600"
@@ -50,7 +50,7 @@ const FindQuery = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className=" bg-slate-950 w-1/3 h-auto rounded-lg border-slate-600 border p-2"
+            className=" bg-slate-950 md:w-1/3 h-auto rounded-lg border-slate-600 border p-2"
           >
             <div>
               <div>

@@ -33,7 +33,7 @@ const TopMenu = ({ showRegister, setShowRegister }) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
         id="userSettings"
-        className="flex gap-6 flex-col md:flex-row"
+        className="flex gap-6 flex-col md:flex-row mb-4 md:mb-0"
       >
         <Button className="flex gap-2 items-center text-base">
           <BsFillPersonCheckFill />

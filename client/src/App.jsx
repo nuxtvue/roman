@@ -53,7 +53,7 @@ function App() {
         <FindQuery />
       </div>
       <div className="md:flex-row gap-4 mx-10 mt-[50px] items-center justify-center flex flex-wrap flex-col">
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           {" "}
           <motion.img
             initial={{ opacity: 0, scale: 0 }}
