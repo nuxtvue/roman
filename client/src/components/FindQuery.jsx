@@ -24,7 +24,7 @@ const FindQuery = () => {
         <div className=" bg-slate-950 w-1/3 h-auto">
           {queryGiga && (
             <div>
-              <span className="text-lg font-bold">Вы ввели запрос:</span>{" "}
+              <span className="text-lg font-bold">Вы ввели запрос :</span>{" "}
               {queryGiga}
             </div>
           )}
