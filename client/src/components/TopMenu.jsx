@@ -1,4 +1,3 @@
-import { MdLogin } from "react-icons/md";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 
@@ -22,10 +21,7 @@ const TopMenu = () => {
         id="userSettings"
         className="flex gap-6"
       >
-        <Button className="flex gap-2 items-center text-base">
-          <MdLogin />
-          Вход
-        </Button>
+        <Button className="flex gap-2 items-center text-base">Вход</Button>
 
         <Button className="flex gap-2 items-center text-base">
           Регистрация{" "}

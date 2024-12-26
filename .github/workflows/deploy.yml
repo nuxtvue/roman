@@ -28,7 +28,7 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
 
             # Установка зависимостей
-            npm install
+            
 
             # Сборка фронтенда
             cd client
