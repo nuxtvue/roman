@@ -6,7 +6,7 @@ import PricingIllustration from "././assets/images/pricing-illustration.svg";
 function App() {
   const headerText = `РОБОТ РОМАН - Виртуальный ассистент №1, созданный в Яндексе1. Я
             всегда рядом и готов помочь — найти что‑нибудь в интернете, включить
-            музыку, зажечь свет или даже придумать что попросите!!.loc `;
+            музыку, зажечь свет или даже придумать что попросите!!.locs `;
   const typingRender = (text) => {
     return text.split("").map((char, index) => {
       return (
