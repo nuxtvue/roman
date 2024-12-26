@@ -28,7 +28,7 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
 
             # Установка зависимостей
-            scp -i ~/.ssh/github -r ./* user@your-vds-ip.com:/var/www/myapp
+            scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/myapp
 
             # Сборка фронтенда
             cd client
