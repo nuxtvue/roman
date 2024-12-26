@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to Server
         run: |
           # Клонировать репозиторий на сервер
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            scp -i ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             
             cd ${{ secrets.SERVER_PATH }} && git pull origin main
             
@@ -35,8 +35,10 @@ jobs:
             npm install
             npm run build
 
+            cd ${{ secrets.SERVER_PATH }}
+
             # Запуск бэкенда с помощью PM2
-            cd ../server
+            cd server
             npm install
             pm2 restart all || pm2 start server.js --name "server"
 
