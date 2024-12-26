@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
+import RegisterForm from "./RegisterForm";
 
-const TopMenu = () => {
+const TopMenu = ({ showRegister, setShowRegister }) => {
+  console.log(showRegister);
   return (
     <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg p-4 shadow-md shadow-slate-600 rounded-lg w-[95%]">
       <div className="flex flex-row gap-4">
@@ -23,9 +26,18 @@ const TopMenu = () => {
       >
         <Button className="flex gap-2 items-center text-base">Вход</Button>
 
-        <Button className="flex gap-2 items-center text-base">
+        <Button
+          className="flex gap-2 items-center text-base"
+          onClick={() => setShowRegister(!showRegister)}
+        >
           Регистрация
         </Button>
+        {showRegister && (
+          <RegisterForm
+            showRegister={showRegister}
+            setShowRegister={setShowRegister}
+          />
+        )}
       </motion.div>
     </div>
   );
