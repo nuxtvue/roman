@@ -25,15 +25,15 @@ function App() {
     });
   };
   return (
-    <div>
+    <div className="w-screen h-screen">
       <div id="topmenu" className="">
         <TopMenu />
         <img
           src={HeroBack}
           alt="hero-back-illustration"
-          className="w-full absolute top-6 left-0 z-[-1] opacity-20"
+          className="w-full absolute top-6 opacity-20"
         />
-        <div className="flex w-full justify-around my-8  px-4 flex-wrap">
+        <div className="flex w-[95%] justify-around my-4 mx-6 px-4 flex-wrap">
           <div className="w-1/3 text-lg">{typingRender(headerText)}</div>
           <div className="relative ">
             <div className="mt-[50px]">
@@ -69,12 +69,12 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="flex justify-start items-center md:ml-[200px]">
+        <div className="flex justify-start items-center ml-[250px] gap-4">
           <Input
             placeholder="Ваш запрос"
             className="w-1/3 h-14 text-md border-2 border-slate-600"
           />
-          <Button className="w-1/8 h-14 text-md border-2 border-slate-600">
+          <Button className="w-1/8 h-12 text-md border-2 border-slate-600">
             Найти
           </Button>
         </div>

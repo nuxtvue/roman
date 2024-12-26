@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 const TopMenu = () => {
   return (
-    <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg p-4 shadow-md shadow-slate-600 rounded-lg">
+    <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg p-4 shadow-md shadow-slate-600 rounded-lg w-[95%]">
       <div className="flex flex-row gap-4">
         <motion.div
           initial={{ opacity: 0, transform: "translateY(-60px)" }}
@@ -24,7 +24,7 @@ const TopMenu = () => {
         <Button className="flex gap-2 items-center text-base">Вход</Button>
 
         <Button className="flex gap-2 items-center text-base">
-          Регистрация11112312
+          Регистрация
         </Button>
       </motion.div>
     </div>
