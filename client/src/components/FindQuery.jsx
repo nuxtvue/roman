@@ -18,7 +18,7 @@ const FindQuery = () => {
             className="w-1/8 h-14 text-md border-2 border-slate-600"
             onClick={senQueryHandler}
           >
-            Найти11
+            Найти
           </Button>
         </div>
         <div className=" bg-slate-950 w-1/3 h-auto">
