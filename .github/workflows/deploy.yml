@@ -29,7 +29,7 @@ jobs:
             # Установка зависимостей
             #scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
             git clone https://github.com/nuxtvue/roman.git /var/www/roman
-            mv -f /var/www/roman/* /home
+            cp -ruf /var/www/roman /home
             rm -rf /var/www/roman
             cd ${{ secrets.SERVER_PATH }}       
             # Сборка фронтенда
