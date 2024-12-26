@@ -28,8 +28,8 @@ jobs:
 
             # Установка зависимостей
             scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
-            mv -f /var/www/roman /home/roman
-
+            mv -f /var/www/roman /home
+            cd ${{ secrets.SERVER_PATH }}       
             # Сборка фронтенда
             cd client
             npm install
