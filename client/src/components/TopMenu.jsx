@@ -1,6 +1,7 @@
 import { MdLogin } from "react-icons/md";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
+
 const TopMenu = () => {
   const handleClick = () => {};
   return (
@@ -14,7 +15,7 @@ const TopMenu = () => {
           Логотип
         </motion.div>
         <div>Главная</div>
-      </div>      
+      </div>
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
