@@ -27,23 +27,13 @@ const RegisterForm = ({ showRegister, setShowRegister }) => {
               <Label htmlFor="name" className="text-right">
                 Ваш Email
               </Label>
-              <Input
-                id="email"
-                value=""
-                placeholder="Email"
-                className="col-span-3"
-              />
+              <Input id="email" placeholder="Email" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="username" className="text-right">
                 Пароль
               </Label>
-              <Input
-                id="username"
-                placeholder="*****"
-                value=""
-                className="col-span-3"
-              />
+              <Input id="username" placeholder="*****" className="col-span-3" />
             </div>
           </div>
           <DialogFooter>
