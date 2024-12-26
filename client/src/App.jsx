@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { motion } from "motion/react";
 import TopMenu from "./components/TopMenu";
 import HeroBack from "././assets/images/hero-back-illustration.svg";

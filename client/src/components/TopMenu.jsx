@@ -3,7 +3,6 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 
 const TopMenu = () => {
-  const handleClick = () => {};
   return (
     <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg p-4 shadow-md shadow-slate-600 rounded-lg">
       <div className="flex flex-row gap-4">
