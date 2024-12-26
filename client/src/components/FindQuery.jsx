@@ -3,9 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion } from "motion/react";
 const FindQuery = () => {
-  const [queryGiga, setQueryGiga] = useState("");
+  const [queryGiga, setQueryGiga] = useState();
   const [resFromGiga, setResFromGiga] = useState();
   const sendQueryHandler = () => {
+    console.log(queryGiga);
+    if (!queryGiga) {
+      setResFromGiga("Введите запрос!");
+    }
     if (queryGiga) {
       setTimeout(() => {
         setResFromGiga("Ожидаем ответа...");
@@ -56,6 +60,9 @@ const FindQuery = () => {
               <div className="text-white mt-2 p-2">{resFromGiga}</div>
             </div>
           </motion.div>
+        )}
+        {resFromGiga && !queryGiga && (
+          <div className="text-red-500 -mt-2 text-sm">Введите запрос!</div>
         )}
       </div>
     </div>
