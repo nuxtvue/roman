@@ -9,8 +9,8 @@ import { BsFillPersonPlusFill, BsFillPersonCheckFill } from "react-icons/bs";
 const TopMenu = ({ showRegister, setShowRegister }) => {
   console.log(showRegister);
   return (
-    <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg shadow-md shadow-slate-600 rounded-lg w-[95%]">
-      <div className="flex flex-row gap-4 items-center">
+    <div className="flex flex-col md:flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg shadow-md shadow-slate-600 rounded-lg w-[95%]">
+      <div className="flex flex-col md:flex-row gap-4 items-center">
         <motion.div
           initial={{ opacity: 0, transform: "translateY(-60px)" }}
           animate={{ opacity: 1, transform: "translateY(0px)" }}
@@ -33,7 +33,7 @@ const TopMenu = ({ showRegister, setShowRegister }) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
         id="userSettings"
-        className="flex gap-6"
+        className="flex gap-6 flex-col md:flex-row"
       >
         <Button className="flex gap-2 items-center text-base">
           <BsFillPersonCheckFill />

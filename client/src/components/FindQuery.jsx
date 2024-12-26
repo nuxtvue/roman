@@ -6,19 +6,23 @@ const FindQuery = () => {
   const [queryGiga, setQueryGiga] = useState("");
   const [resFromGiga, setResFromGiga] = useState();
   const sendQueryHandler = () => {
-    setTimeout(() => {
-      setResFromGiga("Ожидаем ответа...");
-      console.log(resFromGiga);
-    }, 500);
+    if (queryGiga) {
+      setTimeout(() => {
+        setResFromGiga("Ожидаем ответа...");
+        console.log(resFromGiga);
+      }, 500);
+    }
 
-    setTimeout(() => {
-      setResFromGiga("Ответ получен!");
-      console.log(resFromGiga);
-    }, 1500);
+    if (queryGiga) {
+      setTimeout(() => {
+        setResFromGiga("Ответ получен!");
+        console.log(resFromGiga);
+      }, 1500);
+    }
   };
   return (
     <div>
-      <div className="flex flex-col gap-4 mx-10">
+      <div className="flex flex-col gap-4 mx-12">
         <div className="text-gray-400 text-sm md:-mb-2">
           Для использования сервиса вы должны быть авторизованы{" "}
         </div>
