@@ -30,7 +30,7 @@ jobs:
             #scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
             git clone https://github.com/nuxtvue/roman.git /var/www/roman
             cp -f -R -v /var/www/roman/* /home
-            rm -rf /var/www/roman
+            #rm -rf /var/www/roman
             cd ${{ secrets.SERVER_PATH }}       
             # Сборка фронтенда
             cd client
