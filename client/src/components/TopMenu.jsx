@@ -2,18 +2,19 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import RegisterForm from "./RegisterForm";
+import Logo from "@/assets/images/Logo.png";
 
 const TopMenu = ({ showRegister, setShowRegister }) => {
   console.log(showRegister);
   return (
-    <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg p-4 shadow-md shadow-slate-600 rounded-lg w-[95%]">
-      <div className="flex flex-row gap-4">
+    <div className="flex flex-row justify-around items-center gap-4 mt-4 mx-8 text-lg shadow-md shadow-slate-600 rounded-lg w-[95%]">
+      <div className="flex flex-row gap-4 items-center">
         <motion.div
           initial={{ opacity: 0, transform: "translateY(-60px)" }}
           animate={{ opacity: 1, transform: "translateY(0px)" }}
           transition={{ duration: 1 }}
         >
-          Логотип
+          <img src={Logo} alt="logo" className="w-20" />
         </motion.div>
         <div>Главная</div>
       </div>

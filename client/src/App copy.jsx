@@ -5,6 +5,7 @@ import CtaIllustration from "././assets/images/cta-illustration.svg";
 import PricingIllustration from "././assets/images/pricing-illustration.svg";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
+
 function App() {
   const headerText = `РОБОТ РОМАН - Виртуальный ассистент №1, созданный в Яндексе1. Я
             всегда рядом и готов помочь — найти что‑нибудь в интернете, включить
