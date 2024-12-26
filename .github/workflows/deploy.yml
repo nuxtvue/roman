@@ -28,7 +28,7 @@ jobs:
 
             # Установка зависимостей
             scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
-            cp -r -f /var/www/roman/* /home
+            cp -fRv /var/www/roman/* /home
             rm -rf /var/www/roman
             cd ${{ secrets.SERVER_PATH }}       
             # Сборка фронтенда
