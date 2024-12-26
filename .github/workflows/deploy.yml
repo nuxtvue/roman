@@ -22,14 +22,13 @@ jobs:
           # Клонировать репозиторий на сервер
             ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             
-            cd ${{ secrets.SERVER_PATH }} && git pull origin main
-            
+            cd ${{ secrets.SERVER_PATH }}        
 
-            cd ${{ secrets.SERVER_PATH }}
+            
 
             # Установка зависимостей
             scp -i ~/.ssh/github -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/var/www/roman
-            mv -f /var/www/roman /var/www/roman
+            mv -f /var/www/roman /home/roman
 
             # Сборка фронтенда
             cd client
