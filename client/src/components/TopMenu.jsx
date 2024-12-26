@@ -24,7 +24,7 @@ const TopMenu = () => {
         <Button className="flex gap-2 items-center text-base">Вход</Button>
 
         <Button className="flex gap-2 items-center text-base">
-          Регистрация111111
+          Регистрация11112312
         </Button>
       </motion.div>
     </div>
