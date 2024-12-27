@@ -10,8 +10,19 @@ dotenv.config();
 app.use(cookieParser());
 app.use(express.json({ limit: "5mb" }));
 app.use(urlencoded({ extended: true }));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://62.109.13.68",
+  "http://62.109.13.68:5173",
+];
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://62.109.13.68/"],
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Не разрешен доступ из этого источника"));
+    }
+  },
   credentials: true,
 };
 mongoose
