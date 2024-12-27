@@ -3,6 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoute from "./routes/user.js";
+
 const app = express();
 dotenv.config();
 app.use(cookieParser());
@@ -20,6 +22,9 @@ mongoose
   });
 
 app.use(cors(corsOptions));
+
+//ROUTES
+app.use("/api/user", userRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

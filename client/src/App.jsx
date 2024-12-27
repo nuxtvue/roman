@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import TopMenu from "./components/TopMenu";
 import HeroBack from "././assets/images/hero-back-illustration.svg";
 import { LinearGradient } from "react-text-gradients";
+import { Toaster } from "@/components/ui/toaster";
 
 import HeroImg from "./components/HeroImg";
 import FindQuery from "./components/FindQuery";
@@ -28,6 +29,7 @@ function App() {
   };
   return (
     <div>
+      <Toaster />
       <div id="topmenu" className="">
         <TopMenu
           showRegister={showRegister}
