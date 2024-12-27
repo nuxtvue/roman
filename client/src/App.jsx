@@ -11,6 +11,7 @@ import zachem from "@/assets/images/zachem.jpg";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const headerText = ` ваш цифровой помощник по охране труда. Теперь я использую нейросеть последнего поколения с накопленными знаниями лучших специалистов по охране труда и доступен в любое удобное для вас время в новом Чате. Постоянно совершенствую свои навыки и развиваюсь, поэтому вы можете найти ответ на любой ваш вопрос по охране труда. `;
   const typingRender = (text) => {
     return text.split("").map((char, index) => {
@@ -34,6 +35,8 @@ function App() {
         <TopMenu
           showRegister={showRegister}
           setShowRegister={setShowRegister}
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
         />
         <img
           src={HeroBack}

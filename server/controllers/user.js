@@ -7,6 +7,7 @@ import { timeStamp } from "console";
 
 export const register = async (req, res) => {
   const { email, password } = req.body;
+  let role = "";
   if (!email || !password) {
     return res
       .status(400)
@@ -19,9 +20,16 @@ export const register = async (req, res) => {
       .status(400)
       .json({ success: false, message: "Пользователь уже существует" });
   }
+  const allUsers = await User.find();
+  console.log(allUsers);
+  if (allUsers.length === 0) {
+    role = "admin";
+  } else {
+    role = "user";
+  }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({ email, password: hashedPassword });
+  const user = new User({ email, password: hashedPassword, role });
   await user.save();
   res
     .status(201)
