@@ -61,9 +61,9 @@ function App() {
         <div className="md:w-1/3">
           {" "}
           <motion.img
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 2, type: "spring" }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -100 }}
+            transition={{ duration: 2 }}
             src={zachem}
             alt="zachem"
             className=" rounded-md"
