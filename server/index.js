@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(express.json({ limit: "5mb" }));
 app.use(urlencoded({ extended: true }));
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://62.109.13.68/"],
   credentials: true,
 };
 mongoose
