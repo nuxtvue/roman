@@ -61,8 +61,8 @@ function App() {
         <div className="md:w-1/3">
           {" "}
           <motion.img
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -200 }}
             transition={{ duration: 2 }}
             src={zachem}
             alt="zachem"

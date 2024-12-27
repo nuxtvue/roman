@@ -24,10 +24,15 @@ const TopMenu = ({
 }) => {
   const [user, setUser] = useRecoilState(userAtom);
   const logout = async (user) => {
+    console.log("exit");
     try {
-      const res = await axios.get("http://localhost:3000/api/user/logout", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/user/logout",
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
       if (res.data.success) {
         setUser(null);
         toast({
@@ -65,7 +70,7 @@ const TopMenu = ({
         id="userSettings"
         className="flex gap-6 flex-col md:flex-row mb-4 md:mb-0"
       >
-        {user && (
+        {user?.email && (
           <div className="flex gap-2 items-center text-base">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
@@ -78,7 +83,7 @@ const TopMenu = ({
             </Button>
           </div>
         )}
-        {!user && (
+        {!user?.email && (
           <Button
             className="flex gap-2 items-center text-base"
             onClick={() => setShowLogin(!showLogin)}
@@ -91,7 +96,7 @@ const TopMenu = ({
         {showLogin && (
           <LoginForm showLogin={showLogin} setShowLogin={setShowLogin} />
         )}
-        {!user && (
+        {!user?.email && (
           <Button
             className="flex gap-2 items-center text-base"
             onClick={() => setShowRegister(!showRegister)}

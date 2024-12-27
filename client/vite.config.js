@@ -11,6 +11,12 @@ export default defineConfig({
     port: 5173,
     // Убедитесь, что порт правильный
   },
+  proxy: {
+    "/api": "http://localhost:3000",
+    "/sitemap.xml": "http://localhost:3000",
+    "/robots.txt": "http://localhost:3000",
+    // proxy requests to Express server
+  },
   resolve: {
     alias: {
       // eslint-disable-next-line no-undef
