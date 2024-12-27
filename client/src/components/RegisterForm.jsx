@@ -21,7 +21,7 @@ const RegisterForm = ({ showRegister, setShowRegister }) => {
     try {
       console.log(registerFormData);
       const res = await axios.post(
-        "http://localhost:3000/api/user/register",
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/user/register",
         registerFormData
       );
       console.log(res);

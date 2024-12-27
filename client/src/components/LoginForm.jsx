@@ -24,7 +24,7 @@ const LoginForm = ({ showLogin, setShowLogin }) => {
     try {
       console.log(loginFormData);
       const res = await axios.post(
-        "http://localhost:3000/api/user/login",
+        import.meta.env.VITE_SERVER_DOMAIN + "/api/user/login",
         loginFormData,
         { withCredentials: true }
       );
