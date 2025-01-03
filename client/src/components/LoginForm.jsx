@@ -66,6 +66,7 @@ const LoginForm = ({ showLogin, setShowLogin }) => {
               <Input
                 id="email"
                 placeholder="Email"
+                type="email"
                 className="col-span-3"
                 onChange={(e) =>
                   setLoginFormData({
@@ -82,6 +83,7 @@ const LoginForm = ({ showLogin, setShowLogin }) => {
               <Input
                 id="username"
                 placeholder="*****"
+                type="password"
                 className="col-span-3"
                 onChange={(e) =>
                   setLoginFormData({

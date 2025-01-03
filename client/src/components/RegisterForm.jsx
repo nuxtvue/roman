@@ -61,6 +61,7 @@ const RegisterForm = ({ showRegister, setShowRegister }) => {
               <Input
                 id="email"
                 placeholder="Email"
+                type="email"
                 className="col-span-3"
                 onChange={(e) =>
                   setRegisterFormData({
@@ -78,6 +79,7 @@ const RegisterForm = ({ showRegister, setShowRegister }) => {
                 id="username"
                 placeholder="*****"
                 className="col-span-3"
+                type="password"
                 onChange={(e) =>
                   setRegisterFormData({
                     ...registerFormData,

@@ -164,7 +164,7 @@ function App() {
               <CardTitle>Просто объясняю сложное</CardTitle>
             </CardHeader>
             <CardContent>
-              <p> как определить, какие СИЗ нужны работнику?</p>
+              <p> -как определить, какие СИЗ нужны работнику?</p>
             </CardContent>
           </Card>
         </motion.div>
