@@ -2,26 +2,52 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion } from "motion/react";
+import axios from "axios";
+import { useRecoilState } from "recoil";
+import { userAtom } from "@/recoil/atom/userAtom";
+import { useToast } from "@/hooks/use-toast";
 const FindQuery = () => {
   const [queryGiga, setQueryGiga] = useState();
   const [resFromGiga, setResFromGiga] = useState();
-  const sendQueryHandler = () => {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useRecoilState(userAtom);
+  const { toast } = useToast();
+  const sendQueryHandler = async () => {
+    if (!user?.email) {
+      return toast({
+        variant: "destructive",
+        title: "Вы не авторизованы",
+        description: "Пожалуйста войдите на сайт для использования сервиса",
+      });
+    }
     console.log(queryGiga);
     if (!queryGiga) {
       setResFromGiga("Введите запрос!");
     }
+    setLoading(true);
     if (queryGiga) {
-      setTimeout(() => {
-        setResFromGiga("Ожидаем ответа...");
-        console.log(resFromGiga);
+      setTimeout(async () => {
+        const resfromgiga2 = await axios.post(
+          import.meta.env.VITE_SERVER_DOMAIN + "/api/gigachat/getmodels",
+          { message: queryGiga },
+          {
+            withCredentials: true,
+          }
+        );
+        if (resfromgiga2.status === 404) {
+          setLoading(false);
+          toast({
+            variant: "destructive",
+            title: "ОШИБКА",
+            description: "Ваш пользователь не найден",
+          });
+        }
+        if (resfromgiga2.status === 200) {
+          setResFromGiga(resfromgiga2.data);
+          console.log(resfromgiga2);
+          setLoading(false);
+        }
       }, 500);
-    }
-
-    if (queryGiga) {
-      setTimeout(() => {
-        setResFromGiga("Ответ получен!");
-        console.log(resFromGiga);
-      }, 1500);
     }
   };
   return (
@@ -38,6 +64,7 @@ const FindQuery = () => {
             className="md:w-1/3 h-14 text-md border-2 border-slate-600"
           />
           <Button
+            {...(loading && { disabled: true })}
             className="w-1/8 h-14 text-md border-2 border-slate-600"
             onClick={() => sendQueryHandler()}
           >
@@ -50,13 +77,20 @@ const FindQuery = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className=" bg-slate-950 md:w-1/3 h-auto rounded-lg border-slate-600 border p-2"
+            className=" bg-slate-950 md:w-1/3 h-auto rounded-lg border-slate-600 border p-2 md:w-[100%]"
           >
             <div>
               <div>
                 <span className="text-lg font-bold">Вы ввели запрос :</span>{" "}
                 {queryGiga}
+                {!user?.email && (
+                  <div className="text-red-500 -mt-2 text-sm">
+                    Вы не авторизованы! Пожалуйста войдите на сайт для получения
+                    ответа на Ваши вопросы.
+                  </div>
+                )}
               </div>
+              {loading && <div>Загрузка ответа...</div>}
               <div className="text-white mt-2 p-2">{resFromGiga}</div>
             </div>
           </motion.div>
