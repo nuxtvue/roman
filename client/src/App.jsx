@@ -3,11 +3,19 @@ import TopMenu from "./components/TopMenu";
 import HeroBack from "././assets/images/hero-back-illustration.svg";
 import { LinearGradient } from "react-text-gradients";
 import { Toaster } from "@/components/ui/toaster";
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import HeroImg from "./components/HeroImg";
 import FindQuery from "./components/FindQuery";
 import { useState } from "react";
 import zachem from "@/assets/images/zachem.jpg";
+import kak from "@/assets/images/kak.jpg";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
@@ -72,7 +80,7 @@ function App() {
         <motion.div
           className="w-1/2"
           whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 200 }}
+          initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 2 }}
         >
           <h2 className="text-3xl font-bold mb-4">Зачем ко мне обращаться? </h2>
@@ -83,6 +91,82 @@ function App() {
           интересный вопрос, я знаю, как быстро на него получить
           квалифицированный ответ. Огромный массив данных обеспечивает
           своевременность, компетентность и полноту моих консультаций.
+        </motion.div>
+      </div>
+      <div className="md:flex-row gap-4 mx-10 mt-[50px] items-center justify-center flex flex-wrap flex-col">
+        <div className="md:w-1/3">
+          {" "}
+          <motion.img
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -200 }}
+            transition={{ duration: 2 }}
+            src={kak}
+            alt="kak"
+            className=" rounded-md"
+          />
+        </div>
+        <motion.div
+          className="w-1/2"
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 100 }}
+          transition={{ duration: 2 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">
+            Готов помочь вам в любое время{" "}
+          </h2>
+          Обращайтесь ко мне с вопросами по охране труда в любое удобное для вас
+          время. Формулируйте запросы, как вам удобно, – консультацию вы
+          получите незамедлительно. Взаимодействие со мной очень простое,
+          понятное и удобное.
+        </motion.div>
+      </div>
+      <div className="flex md:flex-row flex-col gap-4 mx-10 mt-[50px] items-center justify-around">
+        <motion.div
+          className="md:w-1/3"
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -100 }}
+          transition={{ duration: 2 }}
+        >
+          <Card className="w-full bg-transparent text-white">
+            <CardHeader>
+              <CardTitle>Помогаю создать СУОТ</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p> - подскажи с чего начать по охране труда?</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+        <motion.div
+          className="md:w-1/3"
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -70 }}
+          transition={{ duration: 2 }}
+        >
+          <Card className="w-full bg-transparent text-white">
+            <CardHeader>
+              <CardTitle>
+                Стараюсь разъяснить непонятные моменты в охране труда
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p> - чем вводный инструктаж отличается от первичного?</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+        <motion.div
+          className="md:w-1/3"
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 100 }}
+          transition={{ duration: 2 }}
+        >
+          <Card className="w-full bg-transparent text-white">
+            <CardHeader>
+              <CardTitle>Просто объясняю сложное</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p> как определить, какие СИЗ нужны работнику?</p>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </div>
