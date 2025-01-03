@@ -120,14 +120,14 @@ function App() {
           понятное и удобное.
         </motion.div>
       </div>
-      <div className="flex md:flex-row flex-col gap-4 mx-10 mt-[50px] items-center justify-around">
+      <div className="flex md:flex-row flex-col gap-4 mx-10 mt-[50px] items-center justify-around mb-[50px]">
         <motion.div
-          className="md:w-1/3"
+          className="md:w-1/3 w-full"
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 2 }}
         >
-          <Card className="w-full bg-transparent text-white">
+          <Card className="w-full bg-transparent text-white h-36">
             <CardHeader>
               <CardTitle>Помогаю создать СУОТ</CardTitle>
             </CardHeader>
@@ -137,12 +137,12 @@ function App() {
           </Card>
         </motion.div>
         <motion.div
-          className="md:w-1/3"
+          className="md:w-1/3 w-full"
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: -70 }}
           transition={{ duration: 2 }}
         >
-          <Card className="w-full bg-transparent text-white">
+          <Card className="w-full bg-transparent text-white h-36">
             <CardHeader>
               <CardTitle>
                 Стараюсь разъяснить непонятные моменты в охране труда
@@ -154,12 +154,12 @@ function App() {
           </Card>
         </motion.div>
         <motion.div
-          className="md:w-1/3"
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 100 }}
+          className="md:w-1/3 w-full"
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 2 }}
         >
-          <Card className="w-full bg-transparent text-white">
+          <Card className="w-full bg-transparent text-white h-36">
             <CardHeader>
               <CardTitle>Просто объясняю сложное</CardTitle>
             </CardHeader>
