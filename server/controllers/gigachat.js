@@ -15,8 +15,7 @@ export const getModelsGigachat = async (req, res) => {
   const client = new GigaChat({
     timeout: 600,
     model: "GigaChat",
-    credentials:
-      "YzFiOTdkZjEtMzYyMy00MjQwLWI5NDUtZGM1ZGM3ZDJiOTgzOmQ4ZWQxNDIzLTEyMTMtNDQxMC04ZjExLWZlNWQzNzVkMjdlMA==",
+    credentials: process.env.GIGASECRET,
     httpsAgent: httpsAgent,
   });
 
