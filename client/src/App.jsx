@@ -1,17 +1,9 @@
 import { motion } from "motion/react";
-import { Routes, Route } from "react-router-dom";
 import TopMenu from "./components/TopMenu";
 import HeroBack from "././assets/images/hero-back-illustration.svg";
 import { LinearGradient } from "react-text-gradients";
 import { Toaster } from "@/components/ui/toaster";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import HeroImg from "./components/HeroImg";
 import FindQuery from "./components/FindQuery";
 import { useState } from "react";
