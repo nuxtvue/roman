@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Routes, Route } from "react-router-dom";
 import TopMenu from "./components/TopMenu";
 import HeroBack from "././assets/images/hero-back-illustration.svg";
 import { LinearGradient } from "react-text-gradients";
@@ -16,6 +17,7 @@ import FindQuery from "./components/FindQuery";
 import { useState } from "react";
 import zachem from "@/assets/images/zachem.jpg";
 import kak from "@/assets/images/kak.jpg";
+import RoutesMain from "./components/RoutesMain";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
@@ -38,6 +40,7 @@ function App() {
   };
   return (
     <div>
+      <RoutesMain />
       <Toaster />
       <div id="topmenu" className="">
         <TopMenu
