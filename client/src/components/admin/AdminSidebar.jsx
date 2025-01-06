@@ -10,7 +10,14 @@ const AdminSidebar = () => {
           Панель
         </h1>
       </Link>
-      <div className="flex flex-col items-center justify-start"></div>
+      <div className="flex flex-col items-center justify-start">
+        <Link
+          to="/admin/users"
+          className="text-lg text-indigo-200 hover:text-indigo-300"
+        >
+          Пользователи
+        </Link>
+      </div>
     </div>
   );
 };

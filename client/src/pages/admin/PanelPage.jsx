@@ -78,12 +78,14 @@ const PanelPage = () => {
           >
             <Input
               type="text"
+              value={trainingText}
               placeholder="Ваш вопрос"
               className="w-1/2"
               onChange={(e) => setTrainingText(e.target.value)}
             />
             <textarea
               onChange={(e) => setTrainingLabel(e.target.value)}
+              value={trainingLabel}
               placeholder="Ответ на Ваш вопрос"
               className="bg-transparent text-white border rounded-md p-2 w-1/2 h-96"
               rows={5}

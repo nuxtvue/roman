@@ -76,11 +76,22 @@ const TopMenu = ({
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <span className="font-bold">{user.email}</span>
+            <div className="flex flex-col md:relative">
+              <span className="font-bold">{user.email}</span>
+              {user.role === "admin" && (
+                <span className="text-xs text-gray-400 ">Админ</span>
+              )}
+            </div>
+
             <Button onClick={() => logout(user)}>
               <BsPersonFillDash />
               Выйти
             </Button>
+            {user.role === "admin" && (
+              <Link to="/admin" className=" bg-blue-600 p-2 rounded-md ">
+                <span className="text-sm ">Панель администратора</span>
+              </Link>
+            )}
           </div>
         )}
         {!user?.email && (

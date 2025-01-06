@@ -26,7 +26,6 @@ export const loadTrainingData = async () => {
     // Добавляем данные в классификатор
     questions.forEach((q) => {
       classifier.addDocument(q.question, q.answer);
-      classifier.addDocument;
     });
 
     classifier.train();
@@ -89,8 +88,8 @@ app.post("/api/train", async (req, res) => {
   await newQuestion.save();
 
   // Обучаем классификатор на новых данных
-  classifier.addDocument(text, label);
-  classifier.train();
+  await classifier.addDocument(text, label);
+  await classifier.train();
 
   res.status(200).json({ message: "Модель обучена новым данным." });
 });

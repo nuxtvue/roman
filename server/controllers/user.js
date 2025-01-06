@@ -144,7 +144,7 @@ export const updateUser = async (req, res) => {
 };
 
 export const getAllUsers = async (req, res) => {
-  const users = await User.find({ role: "user" });
+  const users = await User.find();
   const aggregateUsers = await User.aggregate([
     {
       $match: {
