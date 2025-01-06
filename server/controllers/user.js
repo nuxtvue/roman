@@ -100,6 +100,25 @@ export const logoutUser = async (req, res) => {
   }
 };
 
+export const makeAdmin = async (req, res) => {
+  console.log(req.body);
+  const { userId } = req.body;
+  const user = await User.findById(userId);
+  if (!user) {
+    return res
+      .status(404)
+      .json({ success: false, message: "Пользователь не найден" });
+  }
+  if (user.role === "admin") {
+    user.role = "user";
+  } else {
+    user.role = "admin";
+  }
+
+  await user.save();
+  res.status(200).json({ success: true, message: "Пользователь обновлен" });
+};
+
 export const updateUser = async (req, res) => {
   const { username, email, userId } = req.body;
   const image = req.file;

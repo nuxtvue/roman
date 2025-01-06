@@ -5,6 +5,7 @@ import {
   getAllUsers,
   loginUser,
   logoutUser,
+  makeAdmin,
   register,
   updateUser,
 } from "../controllers/user.js";
@@ -16,6 +17,8 @@ const router = express.Router();
 router.post("/register", register);
 router.get("/getall", isAuthenticated, getAllUsers);
 router.post("/login", loginUser);
+router.post("/makeadmin", isAuthenticated, makeAdmin);
+
 router.delete("/delete/:id", isAuthenticated, deleteUser);
 router.put("/editfromadmin/:id", isAuthenticated, editUserFromAdminPanel);
 router.get("/logout", logoutUser);
