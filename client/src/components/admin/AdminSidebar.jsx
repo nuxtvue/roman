@@ -1,5 +1,6 @@
 import { LuLayoutPanelTop } from "react-icons/lu";
 import { Link } from "react-router-dom";
+import { FaUsers } from "react-icons/fa";
 
 const AdminSidebar = () => {
   return (
@@ -10,11 +11,13 @@ const AdminSidebar = () => {
           Панель
         </h1>
       </Link>
-      <div className="flex flex-col items-center justify-start">
+      <div className="flex flex-col items-center justify-start group">
         <Link
           to="/admin/users"
-          className="text-lg text-indigo-200 hover:text-indigo-300"
+          className="text-lg text-indigo-200 hover:text-indigo-300 flex items-center gap-2 group-hover:text-white
+           group-hover:bg-indigo-500 group-hover:rounded-md group-hover:p-2 transition-all duration-300"
         >
+          <FaUsers />
           Пользователи
         </Link>
       </div>

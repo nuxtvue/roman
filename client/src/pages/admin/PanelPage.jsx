@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
+import { motion } from "motion/react";
 
 import { useToast } from "@/hooks/use-toast";
 
@@ -63,7 +64,12 @@ const PanelPage = () => {
   };
 
   return (
-    <div className="w-full h-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full h-full"
+    >
       <h1 className="text-center text-lg text-purple-700 mb-4">
         Панель администратора
       </h1>
@@ -100,7 +106,7 @@ const PanelPage = () => {
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
