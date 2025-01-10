@@ -66,6 +66,12 @@ const UsersPage = () => {
             <th className="text-center border border-gray-500 p-2 ">
               Сделать админом
             </th>
+            <th className="text-center border border-gray-500 p-2 ">
+              Запросов к базе данных
+            </th>
+            <th className="text-center border border-gray-500 p-2 ">
+              Запросов к Гигачату
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -88,6 +94,12 @@ const UsersPage = () => {
                     className="rounded-md w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     onChange={() => makeAdminHandler(user)}
                   />
+                </td>
+                <td className="text-center border border-gray-500 p-2 ">
+                  {user.countQueriesFromDatabase}
+                </td>
+                <td className="text-center border border-gray-500 p-2 ">
+                  {user.countQueriesGigachat}
                 </td>
               </tr>
             );

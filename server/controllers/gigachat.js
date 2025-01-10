@@ -61,13 +61,12 @@ export const getModelsGigachat = async (req, res) => {
   if (!findUser) {
     return res.status(404).json({ message: "Пользователь не найден" });
   }
-  /*   const client = new GigaChat({
+  const client = new GigaChat({
     timeout: 600,
     model: "GigaChat",
     credentials: process.env.GIGASECRET,
     httpsAgent: httpsAgent,
   });
- */
   const message = req.body.message;
 
   try {
@@ -76,9 +75,11 @@ export const getModelsGigachat = async (req, res) => {
     const answer = await findClosestMatch(message);
     console.log(answer);
     if (answer) {
+      findUser.countQueriesFromDatabase += 1;
+      await findUser.save();
       return res.status(200).json(answer.answer);
     }
-    return res.status(200).json("Ответ гигачата");
+
     client
       .chat({
         messages: [{ role: "user", content: message }],
@@ -86,6 +87,8 @@ export const getModelsGigachat = async (req, res) => {
       .then((resp) => {
         res.status(200).json(resp.choices[0]?.message.content);
         console.log(resp.choices[0]?.message.content);
+        findUser.countQueriesGigachat += 1;
+        findUser.save();
       });
   } catch (error) {
     console.error(error);

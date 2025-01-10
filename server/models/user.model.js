@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
-  {   
+  {
     email: {
       type: String,
       required: true,
@@ -17,6 +17,14 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       default: "user",
+    },
+    countQueriesGigachat: {
+      type: Number,
+      default: 0,
+    },
+    countQueriesFromDatabase: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }
