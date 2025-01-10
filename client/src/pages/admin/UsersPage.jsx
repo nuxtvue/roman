@@ -72,6 +72,9 @@ const UsersPage = () => {
             <th className="text-center border border-gray-500 p-2 ">
               Запросов к Гигачату
             </th>
+            <th className="text-center border border-gray-500 p-2 ">
+              Последний запрос
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -100,6 +103,9 @@ const UsersPage = () => {
                 </td>
                 <td className="text-center border border-gray-500 p-2 ">
                   {user.countQueriesGigachat}
+                </td>
+                <td className="text-center border border-gray-500 p-2 ">
+                  {user.lastQuery}
                 </td>
               </tr>
             );

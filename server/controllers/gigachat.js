@@ -76,6 +76,7 @@ export const getModelsGigachat = async (req, res) => {
     console.log(answer);
     if (answer) {
       findUser.countQueriesFromDatabase += 1;
+      findUser.lastQuery = message;
       await findUser.save();
       return res.status(200).json(answer.answer);
     }
@@ -88,6 +89,7 @@ export const getModelsGigachat = async (req, res) => {
         res.status(200).json(resp.choices[0]?.message.content);
         console.log(resp.choices[0]?.message.content);
         findUser.countQueriesGigachat += 1;
+        findUser.lastQuery = message;
         findUser.save();
       });
   } catch (error) {
